@@ -21,22 +21,21 @@ public class MatrizCuadradaValidator implements ConstraintValidator<MatrizCuadra
 		
 		if (value == null) {
 			context.buildConstraintViolationWithTemplate(Constantes.VALORES_NULOS).addConstraintViolation();
-			isValid = false;
+			return false;
 		}
 
 		int orden = value.length;
 
 		if (orden < 2) {
 			context.buildConstraintViolationWithTemplate(Constantes.MATRIZ_MINIMA).addConstraintViolation();
-			isValid = false;
+			return false;
 		}
 
 		for (Integer[] fila : value) {
 
 			if (orden != fila.length) {
 				context.buildConstraintViolationWithTemplate(Constantes.ERROR_LONGITUD_FILA).addConstraintViolation();
-				isValid = false;
-				break;
+				return false;
 			}
 
 		}
